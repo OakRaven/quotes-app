@@ -5,12 +5,18 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let quote of quoteCategory.quotes">
-    <ion-card-header text-center>
-      #{{ quote.id }}
+  <ion-card *ngFor="let quote of quoteCategory.quotes; let i = index">
+    <ion-card-header>
+      #{{ i + 1 }}
     </ion-card-header>
     <ion-card-content>
-      {{ quote.text }}
+      <p>{{ quote.text }}</p>
+      <p class="author">{{ quote.person }}</p>
     </ion-card-content>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear small (click)="onAddToFavourites(quote)" style="text-transform: none;">Favourite</button>
+      </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>
