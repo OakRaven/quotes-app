@@ -3,6 +3,7 @@ import { NavParams, AlertController } from 'ionic-angular';
 
 import { QuoteCategory } from '../../data/quoteCategory.interface';
 import { Quote } from '../../data/quote.interface';
+import { QuotesService } from '../../services/quotes';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class QuotesPage implements OnInit {
 
   constructor(
     private navParams: NavParams,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private quoteService: QuotesService) {
 
   }
 
@@ -32,16 +34,14 @@ export class QuotesPage implements OnInit {
         {
           text: 'Yes, go ahead',
           handler: () => {
-            console.log('Clicked yes');
+            this.quoteService.addQuoteToFavourites(selectedQuote);
+            console.log(this.quoteService.getFavouriteQuotes());
           }
         },
 
         {
           text: 'No thanks',
-          role: 'cancel',
-          handler: () => {
-            console.log('Clicked no');
-          }
+          role: 'cancel'
         }
       ]
     });
