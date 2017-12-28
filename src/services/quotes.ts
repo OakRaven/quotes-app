@@ -18,4 +18,12 @@ export class QuotesService {
     getFavouriteQuotes(): Quote[] {
         return this.favouriteQuotes.slice();
     }
+
+    isQuoteFavourited(quote: Quote): boolean {
+        const position = this.favouriteQuotes.findIndex((item: Quote) => {
+            return item.id === quote.id;
+        });
+
+        return position >= 0;
+    }
 }

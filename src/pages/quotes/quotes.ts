@@ -35,7 +35,6 @@ export class QuotesPage implements OnInit {
           text: 'Yes, go ahead',
           handler: () => {
             this.quoteService.addQuoteToFavourites(selectedQuote);
-            console.log(this.quoteService.getFavouriteQuotes());
           }
         },
 
@@ -47,5 +46,13 @@ export class QuotesPage implements OnInit {
     });
 
     alert.present();
+  }
+
+  onRemoveFromFavourites(selectedQuote: Quote): void {
+    this.quoteService.removeQuoteFromFavourites(selectedQuote);
+  }
+
+  isQuoteFavourited(quote: Quote): boolean {
+    return this.quoteService.isQuoteFavourited(quote);
   }
 }
