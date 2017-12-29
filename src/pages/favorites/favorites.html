@@ -9,7 +9,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding [ngClass]="{'alternative-background': showAlternativeBackground()}">
     <ion-list>
         <ion-item-sliding *ngFor="let quote of quotes">
             <ion-item (click)="onViewQuote(quote)" color="quoteBackground">
